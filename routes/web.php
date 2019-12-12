@@ -28,18 +28,15 @@ AAAControllerのbbbというAction に渡すRoutingの設定」を書いてみ�
 幸路回答：
 Route::get('XXX', 'AAAController@bbb')
 
-【応用】
-前章でAdmin/ProfileControllerを作成し、add Action, edit Actionを追加しました。
-web.phpを編集して、admin/profile/create にアクセスしたら 
-ProfileController の add Action に、admin/profile/edit にアクセスしたら 
-ProfileController の edit Action に割り当てるように設定してください。
-
-以下幸路回答：*/
+---------------------------*/
 
 Route::group(['prefix' => 'admin'], function (){
     Route::get('profile/create', 'Admin\ProfileController@add')->middleware('auth');
-    Route::get('profile/edit', 'Admin\ProfileController@edit')->middleware('auth');;
+    Route::post('profile/create', 'Admin\ProfileController@create')->middleware('auth');
+    Route::get('profile/edit', 'Admin\ProfileController@edit')->middleware('auth');
+    Route::post('profile/edit', 'Admin\ProfileController@update')->middleware('auth');
 });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
