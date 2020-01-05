@@ -34,7 +34,8 @@
                 <div class="form-group row">
                     <label class="col-md-2" for="introduction">自己紹介欄(introduction)</label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" name="introduction" value=" {{ $profiles_form->introduction }}">
+                        <textarea class="form-control" name="introduction" rows="20" value=" {{ $profiles_form->introduction }}" >
+                        </textarea>
                     </div>
                 </div>
                 {{ csrf_field() }}

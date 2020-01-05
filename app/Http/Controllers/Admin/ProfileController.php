@@ -31,13 +31,13 @@ class ProfileController extends Controller
         return redirect('admin/profile/create');
     }
     
-    public function edit()
+    public function edit(Request $request)
     {
         $profiles = Profile::find($request->id);
         if (empty($profiles)) {
             abort(404);
         }
-        return view('admin.profile.edit', ['profile_form' => $profiles]);
+        return view('admin.profile.edit', ['profiles_form' => $profiles]);
     }
     
     public function update(Request $request)
@@ -50,7 +50,7 @@ class ProfileController extends Controller
         
         unset($form['_token']);
         
-        $profiles->fill($profiles_form)->save();
+        $profiles->fill($profile_form)->save();
         
         return redirect('admin/profile/edit');
     }
