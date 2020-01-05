@@ -18,6 +18,10 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('news/create', 'Admin\NewsController@add');
     Route::post('news/create', 'Admin\NewsController@create');
+    Route::get('news', 'Admin\NewsController@index');
+    Route::get('news/edt', 'Admin\NewsController@edit');
+    Route::post('news/edt', 'Admin\NewsController@update');
+    Route::get('news/delete', 'Admin\NewsController@delete');
 });
 
 /*-------------------------
@@ -30,29 +34,14 @@ Route::get('XXX', 'AAAController@bbb')
 
 ---------------------------*/
 
-Route::group(['prefix' => 'admin'], function (){
-    Route::get('profile/create', 'Admin\ProfileController@add')->middleware('auth');
-    Route::post('profile/create', 'Admin\ProfileController@create')->middleware('auth');
-    Route::get('profile/edit', 'Admin\ProfileController@edit')->middleware('auth');
-    Route::post('profile/edit', 'Admin\ProfileController@update')->middleware('auth');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
+    Route::get('profile/create', 'Admin\ProfileController@add');
+    Route::post('profile/create', 'Admin\ProfileController@create');
+    Route::get('profile/edit', 'Admin\ProfileController@edit');
+    Route::post('profile/edit', 'Admin\ProfileController@update');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

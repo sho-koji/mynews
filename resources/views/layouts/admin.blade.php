@@ -11,6 +11,7 @@
         <title>@yield('title')</title>
 
         <!-- Scripts -->
+        <!-- Laravel標準で用意されているJavascriptを読み込みます -->
         <script src="{{ secure_asset('js/app.js') }}" defer></script>
 
         <!-- Fonts -->
@@ -18,11 +19,14 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
+        <!-- Laravel標準で用意されているCSSを読み込みます -->
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ secure_asset('css/admin.css') }}" rel="stylesheet">
     </head>
+    
     <body>
         <div id="app">
+            <!-- 画面上部に表示するナビゲーションバーです。 -->
             <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
@@ -70,6 +74,7 @@
                     </div>
                 </div>
             </nav>
+            <!-- ここまでナビゲーションバー -->
             
             <main class="py-4">
                 @yield('content')
