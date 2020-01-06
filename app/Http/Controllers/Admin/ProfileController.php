@@ -33,11 +33,11 @@ class ProfileController extends Controller
     
     public function edit(Request $request)
     {
-        $profiles = Profile::find($request->id);
+        $profiles = Profile::find($request->id); //URLのクエリパラメーター。profilesテーブルのidを検索して、$profilesに代入
         if (empty($profiles)) {
             abort(404);
         }
-        return view('admin.profile.edit', ['profiles_form' => $profiles]);
+        return view('admin.profile.edit', ['profiles_form' => $profiles]); //editのテンプレートのprofiles_formに$profilesを入れる
     }
     
     public function update(Request $request)
@@ -45,12 +45,12 @@ class ProfileController extends Controller
         $this->validate($request, Profile::$rules);
         
         $profiles = new Profile;
-        $profiles = Profile::find($request->id);
+        $profiles = Profile::find($request->id); // use App\Profile;のクラスを使ってる
         $profiles_form = $request->all();
         
-        unset($form['_token']);
+        unset($profiles_form['_token']);
         
-        $profiles->fill($profile_form)->save();
+        $profiles->fill($profiles_form)->save();
         
         return redirect('admin/profile/edit');
     }
