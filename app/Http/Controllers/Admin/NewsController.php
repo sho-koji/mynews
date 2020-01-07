@@ -89,7 +89,7 @@ class NewsController extends Controller
         
         //News Modelに変種履歴を保存する
         $history = new History;
-        $hisotry->news_id = $news->id;
+        $history->news_id = $news->id;
         $history->edited_at = Carbon::now();
         $history->save();
         
