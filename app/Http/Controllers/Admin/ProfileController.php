@@ -47,7 +47,7 @@ class ProfileController extends Controller
     {
         $this->validate($request, Profile::$rules);
         
-        $profiles = new Profile;
+
         $profiles = Profile::find($request->id); // use App\Profile;のクラスを使ってる
         $profiles_form = $request->all();
         
@@ -59,7 +59,6 @@ class ProfileController extends Controller
         $profilehistory->profile_id = $profiles->id;
         $profilehistory->edited_at = Carbon::now();
         $profilehistory->save();
-        
         
         return redirect('admin/profile/edit');
     }

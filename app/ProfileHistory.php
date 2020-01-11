@@ -12,9 +12,4 @@ class ProfileHistory extends Model
         'profile_id' => 'required',
         'edited_at' => 'required'
         );
-        
-    public function profilehistory()
-    {
-        return $this->hasMany('App\ProfileHistory');
-    }
 }
