@@ -12,7 +12,6 @@ use Carbon\Carbon;
 
 class ProfileController extends Controller
 {
-    //
     
     public function add()
     {
@@ -32,6 +31,17 @@ class ProfileController extends Controller
         $profiles->save();
         
         return redirect('admin/profile/create');
+    }
+    
+    public function index(Request $request)
+    {
+        $cond_name = $request->cond_name;
+        if($cond_name != ''){
+            $posts = Profile::where('name', $cond_name)->get();
+        }else{
+            $posts = Profile::all();
+        }
+        return view('admin.profile.index', ['posts' => $posts, 'cond_name' => $cond_name]);
     }
     
     public function edit(Request $request)
@@ -60,6 +70,14 @@ class ProfileController extends Controller
         $profilehistory->edited_at = Carbon::now();
         $profilehistory->save();
         
-        return redirect('admin/profile/edit');
+        return redirect('admin/profile/');
+    }
+    
+    public function delete(Request $request)
+    {
+        $profiles = Profile::find($request->id);
+        
+        $profile->delete();
+        return('admin/profile/');
     }
 }
