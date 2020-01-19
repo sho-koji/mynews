@@ -1,0 +1,31 @@
+body {
+  color: #000;
+}
+
+.header .logo {
+  width: 120px;
+  height: 82px;
+}
+
+.page_title {
+  letter-spacing: 1.5em;
+}
+
+.headline > span {
+  font-size: 0.7em;
+  border: solid 1px #f00;
+  border-radius: 2px;
+  color: #fff;
+  background-color: #f00;
+}
+
+.headline .topleft {
+  color: #000;
+}
+
+.headline .name {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1.3em;
+}
+

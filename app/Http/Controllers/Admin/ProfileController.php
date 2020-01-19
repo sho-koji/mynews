@@ -65,10 +65,10 @@ class ProfileController extends Controller
         
         $profiles->fill($profiles_form)->save();
         
-        $profilehistory = new ProfileHistory;
-        $profilehistory->profile_id = $profiles->id;
-        $profilehistory->edited_at = Carbon::now();
-        $profilehistory->save();
+        $profile_history = new ProfileHistory;
+        $profile_history->profile_id = $profiles->id;
+        $profile_history->edited_at = Carbon::now();
+        $profile_history->save();
         
         return redirect('admin/profile/');
     }
@@ -77,7 +77,7 @@ class ProfileController extends Controller
     {
         $profiles = Profile::find($request->id);
         
-        $profile->delete();
-        return('admin/profile/');
+        $profiles->delete();
+        return redirect('admin/profile/');
     }
 }

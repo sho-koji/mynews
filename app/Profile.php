@@ -15,10 +15,9 @@ class Profile extends Model
         'introduction' => 'required',
     );
     
-    // エラーが起きてしまうため、リレーション用の下記記述をいったんコメントアウト中
-    // public function profilehistory()
-    // {
-    //     return $this->hasMany('App\ProfileHistory');
-    // }
+    public function profile_history()
+    {
+        return $this->hasMany('App\ProfileHistory');
+    }
 
 }
